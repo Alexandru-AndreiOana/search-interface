@@ -1,0 +1,30 @@
+.profilePreview{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.profilePics {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: middle; 
+}
+
+.profile {
+    padding-left: 2%;
+    display: inline-block;
+    vertical-align: middle; 
+}
+
+.bio {
+    position: relative;
+    bottom: 7px
+}
+
+.filterByReaction {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: left;
+    display: block;
+}
