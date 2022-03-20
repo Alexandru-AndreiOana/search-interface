@@ -26,7 +26,7 @@ class SearchBar extends React.Component {
     render() {
         return(
             
-            <div className="SearchInterface">
+            <div className="searchInterface">
                 <div className="searchPrompt">
                     <input 
                         type = "search"
