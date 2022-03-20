@@ -1,4 +1,8 @@
-.SearchBar {
+.SearchInterface {
     text-align: left;
-    padding: 30px;
+    padding: 1.5rem;
+}
+
+.searchPrompt {
+    margin-bottom: 1rem;
 }

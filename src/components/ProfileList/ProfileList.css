@@ -1,6 +1,9 @@
+.searchResult {
+    height: 200rem;
+}
+
 .profilePreview{
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 1rem;
 }
 
 .profilePics {
@@ -11,20 +14,26 @@
     vertical-align: middle; 
 }
 
-.profile {
+.profileInfo {
     padding-left: 2%;
     display: inline-block;
     vertical-align: middle; 
+    max-width: 14rem;
+    min-width: 65%;
+    max-height: 5rem;
 }
 
 .bio {
     position: relative;
-    bottom: 7px
+    bottom: 0.5rem;
 }
 
-.filterByReaction {
-    padding-bottom: 20px;
-    padding-top: 20px;
+.listPrompt {
     text-align: left;
     display: block;
+}
+
+.listByReaction {
+    margin-bottom: 3.5rem;
+    max-height: 10%;
 }

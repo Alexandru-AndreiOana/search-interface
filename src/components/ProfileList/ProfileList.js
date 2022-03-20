@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Profile from '../Profile/Profile';
 import './ProfileList.css'
 
 const People = [
@@ -57,39 +55,62 @@ class ProfileList extends React.Component {
 
     constructor(props) {
         super(props);
-        this.sortByreaction = this.sortByreaction.bind(this)
-
+        this.reactions = ['💡', '🥶']
     }
 
-    sortByreaction(reaction) {
-        
-        const result = this.props.searchList.filter(person => person.reaction === reaction)
-        const reactionPeople = result.map(person => {
-            return (
-                <div className='profilePreview'>
-                    <img src={person.image} className = 'profilePics previewElement'/>
-                    <div className = 'profile previewElement'>
-                        <h3>{person.firstName}  {person.lastName} </h3>
-                        <small className='bio'>{person.bio}</small>
-                    </div>
-                </div>
-            )
-            
+    filterBySearchTerm(searchTerm) {
+        let fullName = ''
+        return (
+            People.filter(person => {
+                fullName = person.firstName.concat(' ', person.lastName).toLowerCase()
+                return (fullName.includes(searchTerm.toLowerCase()))
+            })
+        )
+    }
+
+    filterList(reaction) {
+        const searchTerm = this.props.searchTerm
+        let result = this.filterBySearchTerm(searchTerm)
+
+        //filterByReaction
+        result = result.filter(person => {
+            return person.reaction === reaction
         })
 
-        return reactionPeople
+        //filterByBio
+        if(this.props.filterBio) {
+            result = result.filter(person => person.bio != undefined)
+        }
+
+        return(
+            result.map(person => {
+                return (
+                    <div className='profilePreview'>
+                        <img src={person.image} className = 'profilePics'/>
+                        <div className = 'profileInfo'>
+                            <h3>{person.firstName}  {person.lastName} </h3>
+                            <small className='bio'>{person.bio}</small>
+                        </div>
+                    </div>
+                )
+            })
+        ) 
     }
 
     render() {
         return (
-            <div>
-                <text className='filterByReaction'>Reacted with 💡: </text>
-                {this.sortByreaction("💡")}
-                <text className='filterByReaction'>Reacted with 🥶: </text>
-                {this.sortByreaction("🥶")}
+            <div className='searchResult'>
+                <div className='listByReaction'>
+                    <text className='listPrompt'>Reacted with {this.reactions[0]}:
+                    </text>{this.filterList(this.reactions[0])}
+                </div>
+                <div className='listByReaction'>
+                    <text className='listPrompt'>Reacted with {this.reactions[1]}:
+                    </text>{this.filterList(this.reactions[1])}
+                </div>
             </div>
         )
     }
-    
 }
+
 export default ProfileList;
